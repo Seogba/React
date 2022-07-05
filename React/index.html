@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <span>Total clicks: 0</span>
-    <button id="btn">Click me</button>
+    <div id="root"></div>
   </body>
-  <script>
-    let counter = 0;
-    const button = document.getElementById("btn");
-    const span = document.querySelector("span");
-    function handleclick() {
-      console.log("I have been clicked");
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    let counter = 10;
+    function countUp() {
       counter += 1;
-      span.innerText = `Total clicks: ${counter}`;
     }
-    button.addEventListener("click", handleclick);
+    const Container = (
+      <div>
+        <h3>제라드 리그우승: {counter}</h3>
+        <button onClick={countUp}>Click me</button>
+      </div>
+    );
+    ReactDOM.render(<Container />, root);
+    //render: React element를 html로 만들어 배치
+    // React.createElement("html 태그", style/ class/ 함수, "내용")
   </script>
 </html>

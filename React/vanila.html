@@ -5,22 +5,33 @@
   </body>
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
     const root = document.getElementById("root");
-    const h3 = React.createElement(
-      "h3",
-      {
-        onMouseEnter: () => console.log("mouse enter"),
-      },
-      "Hello 버기성"
+
+    const Title = () => (
+      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        안녕하세요 박지성입니다.
+      </h3>
     );
-    const btn = React.createElement(
-      "button",
-      { onClick: () => console.log("im clicked") },
-      "Click me"
+
+    const Button = () => (
+      <button
+        style={{
+          backgroundColor: "tomato",
+        }}
+        onClick={() => console.log("im clicked")}
+      >
+        Click me
+      </button>
     );
-    const container = React.createElement("div", null, [h3, btn]);
-    ReactDOM.render(container, root); //render: React element를 html로 만들어 배치
+    const Container = (
+      <div>
+        <Title />
+        <Button />
+      </div>
+    );
+    ReactDOM.render(Container, root); //render: React element를 html로 만들어 배치
     // React.createElement("html 태그", style/ class/ 함수, "내용")
   </script>
 </html>
